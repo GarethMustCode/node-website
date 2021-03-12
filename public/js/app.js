@@ -6,6 +6,7 @@ const weatherForm = document.querySelector('form');
 const search = document.querySelector('input');
 const msg1 = document.querySelector('#message-1');
 const msg2 = document.querySelector('#message-2');
+const msg3 = document.querySelector('#message-3');
 
 msg1.textContent = `From Javascript`;
 weatherForm.addEventListener('submit',(e)=>{
@@ -19,8 +20,11 @@ weatherForm.addEventListener('submit',(e)=>{
         if(data.error){
             console.log(data.error);
         }else{
+            console.log(data);
             msg1.textContent = `Location: ${data.location}`;
+            msg3.textContent = `Temperature: ${data.forecast.temperature}, but feels like: ${data.forecast.feelsLike}`;
             msg2.textContent = `Forecast: ${data.forecast.description}`;
+
         }
     });
 });
