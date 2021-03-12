@@ -5,6 +5,7 @@ const forecast = (lat, lng, callBack) =>{
 //${lat},${lng}
     request(url, (error, response)=>{
         const data = error || JSON.parse(response.body);
+        console.log(data);
 
         if(error === data){
            callBack(`Can't connect`)
@@ -14,7 +15,8 @@ const forecast = (lat, lng, callBack) =>{
             callBack(undefined,{
                 description: data.current.weather_descriptions[0],
                 temperature: data.current.temperature,
-                feelsLike: data.current.feelslike
+                feelsLike: data.current.feelslike,
+                weatherIcon: data.current.weather_icons[0]
             });
 
         }
